@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-
-const Edit = ({ add }) => {
+import { v4 } from 'uuid';
+const Edit = ({ addItem }) => {
   const [note, setNote] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -18,14 +18,24 @@ const Edit = ({ add }) => {
   };
 
   function addEve() {
-    add([note, date, time]);
+    addItem(function (preValue) {
+      return [
+        ...preValue,
+        {
+          id: v4(),
+          note,
+          date,
+          time,
+        },
+      ];
+    });
   }
 
   return (
     <>
       <h1>备忘录</h1>
       <p>事件 :</p>
-      <input type="text" value={note} onChange={handleChange} />
+      <input type="text" value={note} placeholder="请输入" onChange={handleChange} />
       <p>日期 :</p>
       <input type="date" value={date} onChange={changeDate} />
       <p>时间 :</p>
