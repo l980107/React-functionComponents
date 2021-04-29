@@ -3,7 +3,6 @@ import React from 'react';
 const Item = ({ id, note, date, time, deleteData }) => {
   function deleteItem() {
     deleteData((preValue) => {
-      console.log(preValue);
       return preValue.filter((item) => item.id !== id);
     });
   }
