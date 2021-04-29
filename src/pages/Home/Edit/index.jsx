@@ -20,13 +20,13 @@ const Edit = ({ addItem }) => {
   function addEve() {
     addItem(function (preValue) {
       return [
-        ...preValue,
         {
           id: v4(),
           note,
           date,
           time,
         },
+        ...preValue,
       ];
     });
   }
